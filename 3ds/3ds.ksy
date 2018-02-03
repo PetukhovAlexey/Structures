@@ -75,15 +75,6 @@ types:
             'types::rgb_byte_gc': chunk_rgb_byte
             'types::rgb_float': chunk_rgb_float
             'types::rgb_float_gc': chunk_rgb_float
-  chunks:
-    seq:
-      - id: sections
-        type: chunk
-        repeat: eos
-  entry:
-    seq:
-      - id: body
-        type: chunk
   struct_position:
     seq:
       - id: framenum
@@ -161,17 +152,19 @@ types:
   chunk_properties:
     seq:
       - id: properties
-        type: chunks
+        type: chunk
+        repeat: eos
   chunk_entry:
     seq:
       - id: properties
-        type: entry
+        type: chunk
   chunk_object:
     seq:
       - id: name
         type: strz
       - id: properties
-        type: chunks
+        type: chunk
+        repeat: eos
   chunk_string:
     seq:
       - id: path
